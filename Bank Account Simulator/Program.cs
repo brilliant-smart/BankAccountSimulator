@@ -31,38 +31,44 @@ namespace Bank_Account_Simulator
                 Console.WriteLine($"Press 4 to get your transactions history");
                 Console.WriteLine($"Press 5 to Exit");
 
-
-
-                int transactionChoice = int.Parse(Console.ReadLine());
-
-
-                switch (transactionChoice)
+                try
                 {
-                    case 1:
-                        Console.WriteLine($"Your current account balance is: {bankAccount.GetBalance()}");
-                        break;
 
-                    case 2:
-                        Console.WriteLine($"Please enter the amount you would like to deposit here:");
-                        decimal depositAmount = decimal.Parse(Console.ReadLine());
-                        bankAccount.Deposit(depositAmount);
-                        break;
+                    int transactionChoice = int.Parse(Console.ReadLine());
 
-                    case 3:
-                        Console.WriteLine($"Please enter the amount you would like to withdraw");
-                        decimal withdrawAmount = decimal.Parse(Console.ReadLine());
-                        bankAccount.Withdraw(withdrawAmount);
-                        break;
-                    case 4:
-                        Console.WriteLine($"Your transactions history is: ");
-                        bankAccount.GetTransactionHistory();
-                        break;
-                    case 5:
-                        Console.WriteLine("Thank you for banking with us");
-                        break;
-                    default:
-                        Console.WriteLine("wrong choice please try again");
-                        break;
+
+                    switch (transactionChoice)
+                    {
+                        case 1:
+                            Console.WriteLine($"Your current account balance is: {bankAccount.GetBalance()}");
+                            break;
+
+                        case 2:
+                            Console.WriteLine($"Please enter the amount you would like to deposit here:");
+                            decimal depositAmount = decimal.Parse(Console.ReadLine());
+                            bankAccount.Deposit(depositAmount);
+                            break;
+
+                        case 3:
+                            Console.WriteLine($"Please enter the amount you would like to withdraw");
+                            decimal withdrawAmount = decimal.Parse(Console.ReadLine());
+                            bankAccount.Withdraw(withdrawAmount);
+                            break;
+                        case 4:
+                            Console.WriteLine($"Your transactions history is: ");
+                            bankAccount.GetTransactionHistory();
+                            break;
+                        case 5:
+                            Console.WriteLine("Thank you for banking with us");
+                            return;
+                        default:
+                            Console.WriteLine("wrong choice please try again");
+                            break;
+                    }
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("Wrong choice, kindly read the prompt again");
                 }
             }
                 
